@@ -1,13 +1,15 @@
-import Link from "next/link";
-import MaxWidthWrapper from "./MaxWidthWrapper";
-import { buttonVariants } from "./ui/button";
+import Link from "next/link"
+import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server"
+
+import { buttonVariants } from "@/components/ui/button"
+import MaxWidthWrapper from "@/components/MaxWidthWrapper"
 
 const Navbar = () => {
   return (
-    <nav className="sticky h-14 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
+    <nav className="sticky top-0 z-30 h-14 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
-          <Link href="/" className="flex z-40 font-semibold">
+          <Link href="/" className="z-40 flex font-semibold">
             <span>Paraphrase.dev</span>
           </Link>
           {/* todo: add mobile navbar */}
@@ -23,21 +25,27 @@ const Navbar = () => {
               >
                 Pricing
               </Link>
-              <Link
-                href="/login"
+              <LoginLink
                 className={buttonVariants({
                   variant: "ghost",
                   size: "sm",
                 })}
               >
-                Login
-              </Link>
+                Sign in
+              </LoginLink>
+              <RegisterLink
+                className={buttonVariants({
+                  size: "sm",
+                })}
+              >
+                Get started
+              </RegisterLink>
             </>
           </div>
         </div>
       </MaxWidthWrapper>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
